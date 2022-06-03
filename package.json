@@ -2,11 +2,14 @@
   "name": "express-start",
   "version": "1.0.0",
   "description": "",
-  "private":"true",
+  "private": "true",
   "scripts": {
     "start": "node ./index.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "yup": "^0.32.11"
+  }
 }
