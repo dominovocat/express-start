@@ -1,6 +1,6 @@
 const getHome = (req, res) => {
-  console.log("Hello World");
+  console.log(req.params.id);
   res.send("Hello World");
 };
 //module.exports = getHome;
-module.exports.getHome=getHome;
+module.exports.getHome = getHome;
