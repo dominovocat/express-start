@@ -3,5 +3,5 @@ module.exports.middleWare = (req, res, next) => {
   if (verdict) {
     next();
   }
-  res.send('Error')
+  res.status(400).send('Error');
 };
