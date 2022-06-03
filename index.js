@@ -4,7 +4,7 @@ const app = express();
 
 app.get('/',(req,res)=>{
   console.log('Hello World');
-  res.end();
+  res.send('Hello World');
 })
 
-app.listen(5000);
+app.listen(5000,()=>{console.log('Server started')});
