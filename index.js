@@ -1,20 +1,10 @@
-const http = require("http");
+const express = require("express");
 
-// Create a local server to receive data from
-const server = http.createServer((req, res) => {
-  console.log(req);
+const app = express();
 
-  res.writeHead(200, { "Content-Type": "application/json" });
-  res.end(
-    JSON.stringify({
-      data: "Hello World!",
-    })
-  );
-  if(req.method=='POST'&&req.url ==='/workspaces'){
-    req.writeHead(200,{'Content-Type':'application/json'});
-    req.end('OK');
-    return;
-  }
-});
+app.get('/',(req,res)=>{
+  console.log('Hello World');
+  res.end();
+})
 
-server.listen(5000);
+app.listen(5000);
