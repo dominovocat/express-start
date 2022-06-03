@@ -1,10 +1,8 @@
 const express = require("express");
+const { getHome } = require("./src/routers");
 
 const app = express();
 
-app.get('/',(req,res)=>{
-  console.log('Hello World');
-  res.send('Hello World');
-})
+app.get('/',getHome)
 
 app.listen(5000,()=>{console.log('Server started')});
