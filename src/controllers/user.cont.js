@@ -1,4 +1,3 @@
-
 class UserController {
     getUser(req, res, next) {
         try {

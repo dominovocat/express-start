@@ -8,6 +8,10 @@ const app = express();
 
 app.use(express.json());
 
+app.use(function(req,res,next){
+    console.log(new Date().toLocaleString)
+})
+
 app.use('/', router);
 
 app.use(clientErrorsHandler);
