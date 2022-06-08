@@ -1,15 +1,20 @@
-const express = require("express");
-const path = require("path");
-const {clientErrorsHandler,serverErrorHandler,} = require("./src/middlewares/error.handler")
-const dotenv = require("dotenv");
-const { Router } = require("express");
-dotenv.config(path.resolve(__dirname, "../", ".env"));
+const express = require('express');
+const path = require('path');
+const {
+  clientErrorsHandler,
+  serverErrorHandler,
+} = require('./src/middlewares/error.handler.js');
+const router = require('./src/routes/index.js');
+const dotenv = require('dotenv');
+dotenv.config(path.resolve(__dirname, '../', '.env'));
 
 const app = express();
 
 app.use(express.json());
 
-app.use("/files", express.static(path.resolve(__dirname, "../", "public"))); // public/avatars -> /static/avatars
+app.use('/files', express.static(
+  path.resolve(__dirname, '../', 'public')
+)); // public/avatars -> /static/avatars
 
 // cors
 
@@ -18,7 +23,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use("/",Router);
+app.use('/', router);
 
 app.use(clientErrorsHandler);
 app.use(serverErrorHandler);
@@ -26,5 +31,5 @@ app.use(serverErrorHandler);
 const port = process.env.PORT || 5000;
 // http://localhost:5000
 app.listen(port, () => {
-  console.log("Server started on port", port);
+  console.log('Server started on port', port);
 });
