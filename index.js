@@ -1,23 +1,35 @@
-// common js modules
 const express = require('express');
-const { clientErrorsHandler, serverErrorHandler } = require('./src/middlewares/error.handler');
-const router = require('./src/routes/index');
+const path = require('path');
+const {
+  clientErrorsHandler,
+  serverErrorHandler,
+} = require('./middlewares/error.handler.js');
+const router = require('./routes/index.js');
+const dotenv = require('dotenv');
+dotenv.config(path.resolve(__dirname, '../', '.env'));
 
-// Create a server to receive data from clients
 const app = express();
 
 app.use(express.json());
 
-app.use(function(req,res,next){
-    console.log(new Date().toLocaleString)
-})
+app.use('/files', express.static(
+  path.resolve(__dirname, '../', 'public')
+)); // public/avatars -> /static/avatars
+
+// cors
+
+app.use(function (req, res, next) {
+  console.log(new Date().toLocaleString(), req.method, req.path, req.body);
+  next();
+});
 
 app.use('/', router);
 
 app.use(clientErrorsHandler);
 app.use(serverErrorHandler);
 
+const port = process.env.PORT || 5000;
 // http://localhost:5000
-app.listen(5000, () => {
-    console.log('Server started');
+app.listen(port, () => {
+  console.log('Server started on port', port);
 });
