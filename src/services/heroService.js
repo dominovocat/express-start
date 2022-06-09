@@ -1,9 +1,12 @@
+const db = require("../db/index")
+
 let nextId = 1;
 const heroesDB = [{ id: 0 }];
 
 module.exports.createHero = async (data) => {
   const newHero = { ...data, id: nextId++ };
   heroesDB.push(newHero);
+  db.data.heroes.push(newHero);
 
   return newHero;
 };
