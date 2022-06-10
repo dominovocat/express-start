@@ -53,7 +53,10 @@ INSERT INTO "my_products"(name,quantity,price,sold_date) VALUES(
 
 --@block
 ALTER TABLE "my_products"
-DROP CONSTRAINT "my_products_name_check";
+DROP CONSTRAINT "my_products_pkey";
 
 ALTER TABLE "my_products"
-ADD CHECK (length(name)>=2)
+ADD  PRIMARY KEY (id);
+
+
+
