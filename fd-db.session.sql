@@ -45,9 +45,15 @@ CREATE TABLE IF NOT EXISTS "my_products"(
 
 --@block
 INSERT INTO "my_products"(name,quantity,price,sold_date) VALUES(
-  'banana',
+  'ba',
   10,
   101,
   '2001-01-01'
 );
 
+--@block
+ALTER TABLE "my_products"
+DROP CONSTRAINT "my_products_name_check";
+
+ALTER TABLE "my_products"
+ADD CHECK (length(name)>=2)
