@@ -2,10 +2,11 @@ DROP TABLE users;
 --@block
 CREATE TABLE IF NOT EXISTS "users" (
   id serial UNIQUE NOT NULL ,
-  firstName varchar(32) NOT NULL CHECK(char_length (firstName)>=2),
+  firstName varchar(32) NOT NULL CHECK(length (firstName)>=2),
   lastName varchar(64) NOT NULL CHECK(length(lastName)>=2),
-  email varchar (32) NOT NULL UNIQUE CHECK(email>=6),
+  email varchar (32) NOT NULL UNIQUE CHECK(length(email)>=6),
   isMale BOOLEAN NOT NULL,
+  birthdate date NOT NULL CHECK (birthdate BETWEEN '1990-01-01' AND  CURRENT_DATE), 
   balance DECIMAL(4, 2) NOT NULL 
   DEFAULT 0.00 
   CONSTRAINT "positive_balance" CHECK(balance >= 0.00)
@@ -14,8 +15,8 @@ CREATE TABLE IF NOT EXISTS "users" (
 INSERT INTO "users"
 VALUES (200, 'tets', 'test2', true);
 --@block
-INSERT INTO "users" (firstName, lastName, isMale)
-VALUES ('test', 'test2', true);
+INSERT INTO "users" (firstName, lastName, isMale,email,birthdate)
+VALUES ('test', 'test2', true,'email@','1990-01-01');
 
 
 --@block
@@ -32,3 +33,21 @@ INSERT INTO "products" (name,price) VALUES (
   'banana',
   19.50
 );
+
+--@block
+CREATE TABLE IF NOT EXISTS "my_products"(
+  id serial UNIQUE NOT NULL,
+  name varchar(15) NOT NULL CHECK(char_length(name)>=3),
+  quantity NOT NULL CHECK(quantity >=0) DEFAULT 0,
+  price DECIMAL NOT NULL CHECK (price BETWEEN 100 AND 5000),
+  sold_date date NOT NULL CHECK (sold_date BETWEEN '2000-01-01' AND  CURRENT_DATE)
+);
+
+--@block
+INSERT INTO "my_products"(name,quantity,price,sold_date) VALUES(
+  'banana',
+  10,
+  101,
+  '2001-01-01'
+);
+
