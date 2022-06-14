@@ -26,7 +26,8 @@ WHERE date_part('year',age("birthdate"))>=30
 GROUP BY birthdate;
 
 SELECT id,firstName,extract(year from age(birthdate))
-FROM users;
+FROM users
+GROUP BY firstName,id,birthdate;
 
 
 SELECT birthdate,count(*)
