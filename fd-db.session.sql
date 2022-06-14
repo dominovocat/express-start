@@ -21,8 +21,8 @@ VALUES ('burdo', 'erundo', true,'email@gmaik','1990-02-03');
 
 SELECT email as "E-mail"
 FROM users
-WHERE birthdate = current_date
-ORDER BY birthdate;
+WHERE birthdate = '1990-02-02'
+;
 
 SELECT email as "E-mail"
 FROM
