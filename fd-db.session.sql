@@ -14,22 +14,23 @@ CREATE TABLE IF NOT EXISTS "users" (
 --@block
 INSERT INTO "users"
 VALUES (200, 'tets', 'test2', true);
+
 --@block
 INSERT INTO "users" (firstName, lastName, isMale,email,birthdate)
-VALUES ('burdo', 'erundo', true,'email@gmaik','1990-02-03');
+VALUES ('bulka', 'cheer', false,'email@gomak','1996-02-03');
 
 
-SELECT email as "E-mail"
+SELECT birthdate
 FROM users
-WHERE birthdate = '1990-02-02'
-;
+WHERE date_part('year',age("birthdate"))>=30
+GROUP BY birthdate;
 
-SELECT email as "E-mail"
+
+SELECT birthdate,count(*)
 FROM
 users
-WHERE --FILTER
---extract(year from age(birthdate))>=25
-date_part('year',age("birthdate"))>=25;
+GROUP BY birthdate
+HAVING birthdate ='1990-02-03';
 
 
 --@block
