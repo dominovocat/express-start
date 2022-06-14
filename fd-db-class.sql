@@ -28,7 +28,9 @@ CREATE TABLE "lessons"(
 
 CREATE TABLE "group_to_lessons"(
   group_id int REFERENCES groups(id),
-  lessons_id int REFERENCES lessons(id)
+  lessons_id int REFERENCES lessons(id),
+  real_turn int NOT NULL CHECK(real_turn>=1),
+  UNIQUE(group_id,lessons_id)
 );
 
 INSERT INTO "groups"(name,turn) VALUES 
@@ -40,3 +42,12 @@ INSERT INTO "lessons"(name) VALUES
 ('Math'),
 ('OOP'),
 ('History');
+
+--@block
+INSERT INTO "group_to_lessons" VALUES
+(2,2,3),
+(1,3,3),
+(3,1,1);
+
+--@block
+DROP TABLE groups,lessons,group_to_lessons
