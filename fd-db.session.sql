@@ -16,7 +16,20 @@ INSERT INTO "users"
 VALUES (200, 'tets', 'test2', true);
 --@block
 INSERT INTO "users" (firstName, lastName, isMale,email,birthdate)
-VALUES ('test', 'test2', true,'email@','1990-01-01');
+VALUES ('burdo', 'erundo', true,'email@gmaik','1990-02-03');
+
+
+SELECT email as "E-mail"
+FROM users
+WHERE birthdate = current_date
+ORDER BY birthdate;
+
+SELECT email as "E-mail"
+FROM
+users
+WHERE --FILTER
+--extract(year from age(birthdate))>=25
+date_part('year',age("birthdate"))>=25;
 
 
 --@block

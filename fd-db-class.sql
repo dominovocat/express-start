@@ -50,4 +50,11 @@ INSERT INTO "group_to_lessons" VALUES
 (3,1,1);
 
 --@block
-DROP TABLE groups,lessons,group_to_lessons
+DROP TABLE groups,lessons,group_to_lessons;
+
+
+
+SELECT name FROM groups;
+
+
+
