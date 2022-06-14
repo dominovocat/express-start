@@ -20,10 +20,13 @@ INSERT INTO "users" (firstName, lastName, isMale,email,birthdate)
 VALUES ('bulka', 'cheer', false,'email@gomak','1996-02-03');
 
 
-SELECT birthdate
+SELECT birthdate,count(*)
 FROM users
 WHERE date_part('year',age("birthdate"))>=30
 GROUP BY birthdate;
+
+SELECT id,firstName,extract(year from age(birthdate))
+FROM users;
 
 
 SELECT birthdate,count(*)
