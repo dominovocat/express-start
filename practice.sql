@@ -53,5 +53,29 @@ GROUP BY brand
 ;
 
 
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+CREATE TABLE cars(
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  model VARCHAR(32) NOT NULL,
+  brand VARCHAR(32) NOT NULL,
+  UNIQUE(brand,model)
+);
+
+INSERT INTO cars (model,brand) VALUES ('Model Y','Tesla');
 
 
+--@block
+CREATE TABLE airplane(
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  model VARCHAR(32) NOT NULL,
+  brand VARCHAR(32) NOT NULL,
+  UNIQUE(brand,model)
+);
+
+--@block
+INSERT INTO airplane(model,brand)
+VALUES('X-Wing','Rebels'),
+('T-Wing','Rebels'),
+('StarDestroyer','Empire'),
+('DarkWing','Empire')
+;

@@ -77,4 +77,7 @@ ALTER TABLE "my_products"
 ADD  PRIMARY KEY (id);
 
 
-
+SELECT * FROM users
+ORDER BY id
+LIMIT 2
+OFFSET 2;
