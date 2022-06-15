@@ -4,7 +4,7 @@
   "description": "",
   "private": "true",
   "scripts": {
-    "start": "nodemon ./src/index.js"
+    "start": "node ./"
   },
   "keywords": [],
   "author": "",
